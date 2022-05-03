@@ -1,6 +1,7 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import { useState } from "react";
 import { useParams } from "react-router-dom"
+import { AreaUsers } from "../../components/AreaUsers";
 import { RoomCode } from "../../components/RoomCode";
 import { UserCard } from "../../components/UserCard.tsx";
 import { useAuth } from "../../hooks/useAuth";
@@ -21,6 +22,10 @@ interface IUsersInTheRoomProps {
   email: string;
   id: string;
   name: string;
+  card: {
+    selected: boolean;
+    card: number;
+  }
 }
 
 interface IFetchProps {
@@ -31,7 +36,7 @@ export function RoomAdmin() {
   const { id } = useParams();
   const { user } = useAuth();
 
-  const [usersInRoom, setUsersInRoom] = useState<any>();
+  const [usersInRoom, setUsersInRoom] = useState<IFetchProps>();
 
   function handleSelectCard() {
     if(id && user) {
@@ -41,7 +46,8 @@ export function RoomAdmin() {
 
   if(id) {
     onSnapshot(doc(db, "rooms", id), (doc) => {
-      setUsersInRoom(doc.data());
+      const clientFetch = doc.data() as IFetchProps;
+      setUsersInRoom(clientFetch);
     });
   }
 
@@ -58,14 +64,16 @@ export function RoomAdmin() {
 
       <Content>
         <Main>
-          <button onClick={handleSelectCard} >add card</button>
+          {usersInRoom && <AreaUsers usersInTheRoom={usersInRoom.usersInsideTheRoom}/>}
+          
+          <button onClick={handleSelectCard}>add card</button>
         </Main>
 
         <SidebarUsers>
           <h2>Usuários na sala</h2>
 
-          {usersInRoom && usersInRoom.usersInsideTheRoom.map((user: any) => (
-            <UserCard key={user.id} user={user} cardSelected={usersInRoom.cardSelected} />
+          {usersInRoom && usersInRoom.usersInsideTheRoom.map((user) => (
+            <UserCard key={user.id} user={user} />
           ))}
         </SidebarUsers>
       </Content>

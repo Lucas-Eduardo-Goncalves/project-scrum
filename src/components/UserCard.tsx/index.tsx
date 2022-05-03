@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Container } from "./styles";
 
 interface UserProps {
@@ -6,30 +5,19 @@ interface UserProps {
   name: string;
   avatar: string;
   id: string;
-}
-
-interface ICardProps {
-  userId: string;
-  card: number;
+  card: {
+    selected: boolean;
+    card: number;
+  }
 }
 
 interface IUserCardProps {
   user: UserProps;
-  cardSelected: ICardProps[];
 }
 
-export function UserCard({ user, cardSelected }: IUserCardProps) {
-  const [userSelectedCard, setUserSelectedCard] = useState(false);
-
-  useEffect(() => {
-    const userAlready = cardSelected.find(item => item.userId === user.id);
-
-    if(userAlready) setUserSelectedCard(true);
-    else setUserSelectedCard(false);
-  }, [user, cardSelected])
-
+export function UserCard({ user }: IUserCardProps) {
   return (
-    <Container key={user.email} isSelected={userSelectedCard ? "true" : "false"}>
+    <Container key={user.email} isSelected={user.card.selected ? "true" : "false"}>
       <img src={user.avatar} alt={user.name} />
       <div>
         <h3>{user.name}</h3>

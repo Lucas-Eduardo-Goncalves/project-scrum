@@ -28,10 +28,13 @@ export async function HandleCreateRoom({ roomName, user }: IHandleCreateRoomProp
         name: user.displayName,
         email: user.email,
         avatar: user.photoURL,
-        id: user.uid
+        id: user.uid,
+        card: {
+          selected: false,
+          card: 0,
+        }
       }
-    ],
-    cardSelected: []
+    ]
   })
 
   return docRef.id;

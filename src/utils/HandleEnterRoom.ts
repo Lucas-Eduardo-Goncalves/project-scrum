@@ -30,7 +30,7 @@ export async function HandleEnterRoom({ docId, user, navigate }: IHandleEnterRoo
           avatar: user.photoURL,
           email: user.email,
           id: user.uid,
-          name: user.displayName
+          name: user.displayName,
         }]
       });
   
