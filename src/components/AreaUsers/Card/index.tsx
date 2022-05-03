@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Container, Content } from "./styles";
 
 interface IUserProps {
@@ -17,11 +18,17 @@ interface ICardProps {
 }
 
 export function Card({ data, cardView }: ICardProps) {
+  function handleCardStatus(): "notSelected" | "cardView" | "cardSelected" {
+    if(data.card.card === 0) return "notSelected";
+    if(cardView) return "cardView";
+    return "cardSelected";
+  }
+
   return (
     <Container>
       <img src={data.avatar} alt={data.name} />
 
-      <Content isSelected={`${data.card.selected}`}>
+      <Content cardState={handleCardStatus()}>
         {cardView && data.card.card}
       </Content>
     </Container>

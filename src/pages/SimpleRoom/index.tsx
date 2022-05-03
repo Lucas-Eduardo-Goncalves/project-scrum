@@ -74,14 +74,6 @@ export function SimpleRoom() {
           
           <button onClick={handleSelectCard}>add card</button>
         </Main>
-
-        <SidebarUsers>
-          <h2>Usuários na sala</h2>
-
-          {fetchData && fetchData.usersInsideTheRoom.map((user) => (
-            <UserCard key={user.id} user={user} />
-          ))}
-        </SidebarUsers>
       </Content>
     </Container>
   )

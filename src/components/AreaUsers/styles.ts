@@ -53,19 +53,29 @@ export const Content = styled("div", {
     alignItems: "center",
     justifyContent: "center",
 
-    "div": {
-      background: "var(--secondary)",
+    div: {
+      background: "#386641",
+      border: "4px solid #000000",
       height: "100%",
       width: "100%",
-      borderRadius: "0.5rem",
+      borderRadius: "6rem",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
 
       button: {
-        padding: "1rem 2rem",
-        height: "min-content",
-        width: "min-content",
+        height: "3rem",
+        width: "9rem",
+        borderRadius: "0.5rem",
+        border: "none",
+        backgroundColor: "#8367c7",
+        color: "#FFFFFF",
+        fontWeight: "bold",
+        transition: "filter 0.2s",
+
+        "&:hover": {
+          filter: "brightness(0.9)",
+        }
       }
     }
   },

@@ -1,15 +1,15 @@
 import { styled } from "@stitches/react";
 
 export const Container = styled("div", {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
+  position: "relative",
 
   img: {
+    position: "absolute",
+    top: "-0.75rem",
+    left: "-0.75rem",
     width: "2rem",
     height: "2rem",
-    borderRadius: "2rem",
-    marginBottom: "0.5rem"
+    borderRadius: "1rem",
   },
 })
 
@@ -24,17 +24,24 @@ export const Content = styled("div", {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  border: "3px solid transparent",
 
   variants: {
-    isSelected: {
-      true: {
-        background: "var(--primary)",
-        color: "#FFFFFF",
+    cardState: {
+      notSelected: {
+        background: "#ccc"
       },
 
-      false: {
-        background: "#ccc"
-      }
+      cardView: {
+        background: "#ffffff",
+        borderColor: "#8367c7",
+        color: "#8367c7",
+        fontWeight: "bold",
+      },
+
+      cardSelected: {
+        background: "#8367c7"
+      },
     }
   }
 })

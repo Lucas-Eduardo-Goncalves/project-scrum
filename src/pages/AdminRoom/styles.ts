@@ -20,16 +20,24 @@ export const Header = styled("div", {
   borderBottom: '1px solid var(--secondary)',
 
   h1: {
-    color: 'var(--primary)',
-    fontSize: '1.3rem',
+    color: '#8367c7',
+    fontSize: '1.5rem',
+    fontWeight: "bold",
   },
 
   ".buttoncloseroom": {
     padding: '0.5rem 1rem',
-    color: 'var(--shape)',
-    backgroundColor: 'var(--primary)',
+    height: "2.5rem",
+    color: '#ffffff',
+    fontWeight: "bold",
+    backgroundColor: '#8367c7',
     border: 'none',
     borderRadius: '0.5rem',
+    transition: "filter 0.2s",
+    
+    "&:hover": {
+      filter: "brightness(0.9)",
+    }
   }
 })
 

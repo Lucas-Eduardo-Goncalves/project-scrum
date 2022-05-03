@@ -20,17 +20,10 @@ export const Header = styled("div", {
   borderBottom: '1px solid var(--secondary)',
 
   h1: {
-    color: 'var(--primary)',
-    fontSize: '1.3rem',
+    color: '#8367c7',
+    fontSize: '1.5rem',
+    fontWeight: "bold",
   },
-
-  ".buttoncloseroom": {
-    padding: '0.5rem 1rem',
-    color: 'var(--shape)',
-    backgroundColor: 'var(--primary)',
-    border: 'none',
-    borderRadius: '0.5rem',
-  }
 })
 
 export const RigthArea = styled("div", {

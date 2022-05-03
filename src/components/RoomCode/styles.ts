@@ -5,7 +5,7 @@ export const Container = styled("button", {
   borderRadius: '0.5rem',
   overflow: 'hidden',
   
-  border: '1px solid var(--primary)',
+  border: '1px solid #8367c7',
   backgroundColor: '#FFFFFF',
   cursor: 'pointer',
   
@@ -13,7 +13,7 @@ export const Container = styled("button", {
   alignItems: 'center',
 
   div: {
-    background: 'var(--primary)',
+    background: '#8367c7',
     display: 'flex',
     padding: '0 1rem',
     justifyContent: 'center',
