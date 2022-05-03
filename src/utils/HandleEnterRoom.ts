@@ -31,6 +31,10 @@ export async function HandleEnterRoom({ docId, user, navigate }: IHandleEnterRoo
           email: user.email,
           id: user.uid,
           name: user.displayName,
+          card: {
+            selected: false,
+            card: 0,
+          }
         }]
       });
   
