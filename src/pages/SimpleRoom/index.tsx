@@ -28,15 +28,22 @@ interface IUsersInTheRoomProps {
   }
 }
 
+interface IRoomInfoProps {
+  createdAt: string;
+  name: string;
+  viewCard: boolean;
+}
+
 interface IFetchProps {
   usersInsideTheRoom: IUsersInTheRoomProps[]; 
+  roomInfo: IRoomInfoProps;
 }
 
 export function SimpleRoom() {
   const { id } = useParams();
   const { user } = useAuth();
 
-  const [usersInRoom, setUsersInRoom] = useState<IFetchProps>();
+  const [fetchData, setFetchData] = useState<IFetchProps>();
 
   function handleSelectCard() {
     if(id && user) {
@@ -47,7 +54,7 @@ export function SimpleRoom() {
   if(id) {
     onSnapshot(doc(db, "rooms", id), (doc) => {
       const clientFetch = doc.data() as IFetchProps;
-      setUsersInRoom(clientFetch);
+      setFetchData(clientFetch);
     });
   }
 
@@ -63,7 +70,7 @@ export function SimpleRoom() {
 
       <Content>
         <Main>
-          {usersInRoom && <AreaUsers usersInTheRoom={usersInRoom.usersInsideTheRoom}/>}
+          {fetchData && <AreaUsers roomInfo={fetchData.roomInfo} usersInTheRoom={fetchData.usersInsideTheRoom}/>}
           
           <button onClick={handleSelectCard}>add card</button>
         </Main>
@@ -71,7 +78,7 @@ export function SimpleRoom() {
         <SidebarUsers>
           <h2>Usuários na sala</h2>
 
-          {usersInRoom && usersInRoom.usersInsideTheRoom.map((user) => (
+          {fetchData && fetchData.usersInsideTheRoom.map((user) => (
             <UserCard key={user.id} user={user} />
           ))}
         </SidebarUsers>

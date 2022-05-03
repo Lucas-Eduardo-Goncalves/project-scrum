@@ -14,6 +14,7 @@ export async function HandleCreateRoom({ roomName, user }: IHandleCreateRoomProp
     roomInfo: {
       name: roomName,
       createdAt: currentDate,
+      viewCard: false,
     },
 
     admin: {
