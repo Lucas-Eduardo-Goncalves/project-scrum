@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import {
   Container,
   Card,
@@ -20,6 +21,7 @@ interface IAreaUsersProps {
 }
 
 export function AreaUsers({ usersInTheRoom }: IAreaUsersProps) {
+  const location = useLocation();
 
   return (
     <Container>
@@ -36,7 +38,9 @@ export function AreaUsers({ usersInTheRoom }: IAreaUsersProps) {
           {usersInTheRoom[8] && <Card>{usersInTheRoom[8].card.card}</Card>}
         </div>
         <div className="tableTable">
-          <button>Revelar cartas</button>
+          <div>
+            {location.pathname.includes("adminroom") && <button>Revelar cartas</button>}
+          </div>
         </div>
         <div className="tableRight">
           {usersInTheRoom[7] && <Card>{usersInTheRoom[7].card.card}</Card>}

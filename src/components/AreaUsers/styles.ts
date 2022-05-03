@@ -52,6 +52,22 @@ export const Content = styled("div", {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+
+    "div": {
+      background: "var(--secondary)",
+      height: "100%",
+      width: "100%",
+      borderRadius: "0.5rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+
+      button: {
+        padding: "1rem 2rem",
+        height: "min-content",
+        width: "min-content",
+      }
+    }
   },
 
   ".tableRight": {
