@@ -26,7 +26,7 @@ export function Card({ data, cardView }: ICardProps) {
 
   return (
     <Container>
-      <img src={data.avatar} alt={data.name} />
+      {/* <img src={data.avatar} alt={data.name} /> */}
 
       <Content cardState={handleCardStatus()}>
         {cardView && data.card.card}

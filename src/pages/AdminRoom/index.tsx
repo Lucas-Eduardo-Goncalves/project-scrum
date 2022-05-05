@@ -45,12 +45,6 @@ export function RoomAdmin() {
 
   const [fetchData, setFetchData] = useState<IFetchProps>();
 
-  function handleSelectCard() {
-    if(id && user) {
-      HandleAddCard({ card: 1, docId: id, userId: user.uid })
-    }
-  }
-
   if(id) {
     onSnapshot(doc(db, "rooms", id), (doc) => {
       const clientFetch = doc.data() as IFetchProps;
@@ -71,9 +65,12 @@ export function RoomAdmin() {
 
       <Content>
         <Main>
-          {fetchData && <AreaUsers roomInfo={fetchData.roomInfo} usersInTheRoom={fetchData.usersInsideTheRoom}/>}
-          
-          <button onClick={handleSelectCard}>add card</button>
+          {fetchData && (
+            <AreaUsers 
+              roomInfo={fetchData.roomInfo} 
+              usersInTheRoom={fetchData.usersInsideTheRoom}
+            />
+          )}
         </Main>
       </Content>
     </Container>

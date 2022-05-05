@@ -7,7 +7,7 @@ export const Container = styled("div", {
     position: "absolute",
     top: "-0.75rem",
     left: "-0.75rem",
-    width: "2rem",
+    width: "3rem",
     height: "2rem",
     borderRadius: "1rem",
   },

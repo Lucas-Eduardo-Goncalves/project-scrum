@@ -1,6 +1,7 @@
 import { useLocation, useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { HandleViewCard } from "../../utils/HandleViewCard";
+import { SequencyCards } from "../SequencyCards";
 import { Card } from "./Card";
 import {
   Container,
@@ -90,9 +91,9 @@ export function AreaUsers({ usersInTheRoom, roomInfo: { viewCard } }: IAreaUsers
           {usersInTheRoom[5] && <Card data={usersInTheRoom[5]} cardView={viewCard}/>}
         </div>
         <div />
-
-        {/* <button>Add card</button> */}
       </Content>
+
+      <SequencyCards />
     </Container>
   )
 }
