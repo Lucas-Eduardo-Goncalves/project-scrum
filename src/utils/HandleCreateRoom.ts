@@ -1,5 +1,5 @@
 import { User } from "firebase/auth";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db } from "../services/firebase";
 
 interface IHandleCreateRoomProps {
@@ -30,6 +30,7 @@ export async function HandleCreateRoom({ roomName, user }: IHandleCreateRoomProp
         email: user.email,
         avatar: user.photoURL,
         id: user.uid,
+        enterInRoom: new Date().toDateString(),
         card: {
           selected: false,
           card: 0,

@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useParams } from "react-router-dom"
 import { AreaUsers } from "../../components/AreaUsers";
 import { RoomCode } from "../../components/RoomCode";
-import { UserCard } from "../../components/UserCard.tsx";
 import { useAuth } from "../../hooks/useAuth";
 import { db } from "../../services/firebase";
 import { HandleAddCard } from "../../utils/HandleAddCard";
@@ -13,7 +12,6 @@ import {
   Header,
   Content,
   Main,
-  SidebarUsers,
   RigthArea,
 } from "./styles";
 
@@ -71,8 +69,6 @@ export function SimpleRoom() {
       <Content>
         <Main>
           {fetchData && <AreaUsers roomInfo={fetchData.roomInfo} usersInTheRoom={fetchData.usersInsideTheRoom}/>}
-          
-          <button onClick={handleSelectCard}>add card</button>
         </Main>
       </Content>
     </Container>

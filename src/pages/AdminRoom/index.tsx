@@ -3,17 +3,13 @@ import { useState } from "react";
 import { useParams } from "react-router-dom"
 import { AreaUsers } from "../../components/AreaUsers";
 import { RoomCode } from "../../components/RoomCode";
-import { UserCard } from "../../components/UserCard.tsx";
-import { useAuth } from "../../hooks/useAuth";
 import { db } from "../../services/firebase";
-import { HandleAddCard } from "../../utils/HandleAddCard";
 
 import { 
   Container,
   Header,
   Content,
   Main,
-  SidebarUsers,
   RigthArea,
 } from "./styles";
 
@@ -41,8 +37,6 @@ interface IFetchProps {
 
 export function RoomAdmin() {
   const { id } = useParams();
-  const { user } = useAuth();
-
   const [fetchData, setFetchData] = useState<IFetchProps>();
 
   if(id) {

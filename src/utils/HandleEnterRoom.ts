@@ -9,8 +9,6 @@ interface IHandleEnterRoom {
 }
 
 export async function HandleEnterRoom({ docId, user, navigate }: IHandleEnterRoom) {
-  
-
   try {
     const myDocRef = doc(db, "rooms", docId);
     const docSnap = await getDoc(myDocRef);
@@ -31,6 +29,7 @@ export async function HandleEnterRoom({ docId, user, navigate }: IHandleEnterRoo
           email: user.email,
           id: user.uid,
           name: user.displayName,
+          enterInRoom: new Date().toDateString(),
           card: {
             selected: false,
             card: 0,

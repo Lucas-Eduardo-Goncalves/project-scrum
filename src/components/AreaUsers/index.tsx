@@ -1,5 +1,6 @@
 import { useLocation, useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { HandleResetRoom } from "../../utils/HandleResetRoom";
 import { HandleViewCard } from "../../utils/HandleViewCard";
 import { SequencyCards } from "../SequencyCards";
 import { Card } from "./Card";
@@ -47,6 +48,13 @@ export function AreaUsers({ usersInTheRoom, roomInfo: { viewCard } }: IAreaUsers
     })
   }
 
+  async function handleResetRoom() {
+    if(!id) return;
+    if(!user) return;
+
+    await HandleResetRoom({ docId: id })
+  }
+
   return (
     <Container>
       <Content>
@@ -66,7 +74,7 @@ export function AreaUsers({ usersInTheRoom, roomInfo: { viewCard } }: IAreaUsers
             {location.pathname.includes("adminroom") && (
               <>
                 {viewCard && (
-                  <button>
+                  <button onClick={handleResetRoom}>
                     Novo jogo
                   </button>
                 )}
