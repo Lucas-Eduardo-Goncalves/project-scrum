@@ -1,5 +1,5 @@
 import { doc, onSnapshot } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { AreaUsers } from "../../components/AreaUsers";
 import { RoomCode } from "../../components/RoomCode";
@@ -39,12 +39,16 @@ export function RoomAdmin() {
   const { id } = useParams();
   const [fetchData, setFetchData] = useState<IFetchProps>();
 
-  if(id) {
-    onSnapshot(doc(db, "rooms", id), (doc) => {
-      const clientFetch = doc.data() as IFetchProps;
-      setFetchData(clientFetch);
-    });
-  }
+  useEffect(() => {
+    if(id) {
+      onSnapshot(doc(db, "rooms", id), (doc) => {
+        const clientFetch = doc.data() as IFetchProps;
+        setFetchData(clientFetch);
+      });
+    }
+  }, [])
+
+  console.log("oi")
 
   return (
     <Container>

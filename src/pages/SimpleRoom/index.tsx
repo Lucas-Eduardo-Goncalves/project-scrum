@@ -1,11 +1,10 @@
 import { doc, onSnapshot } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { AreaUsers } from "../../components/AreaUsers";
 import { RoomCode } from "../../components/RoomCode";
 import { useAuth } from "../../hooks/useAuth";
 import { db } from "../../services/firebase";
-import { HandleAddCard } from "../../utils/HandleAddCard";
 
 import { 
   Container,
@@ -43,18 +42,14 @@ export function SimpleRoom() {
 
   const [fetchData, setFetchData] = useState<IFetchProps>();
 
-  function handleSelectCard() {
-    if(id && user) {
-      HandleAddCard({ card: 1, docId: id, userId: user.uid })
+  useEffect(() => {
+    if(id) {
+      onSnapshot(doc(db, "rooms", id), (doc) => {
+        const clientFetch = doc.data() as IFetchProps;
+        setFetchData(clientFetch);
+      });
     }
-  }
-
-  if(id) {
-    onSnapshot(doc(db, "rooms", id), (doc) => {
-      const clientFetch = doc.data() as IFetchProps;
-      setFetchData(clientFetch);
-    });
-  }
+  }, [])
 
   return (
     <Container>
